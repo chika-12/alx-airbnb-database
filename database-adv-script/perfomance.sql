@@ -4,10 +4,7 @@ SELECT
 	u.id AS user_id, u.first_name, u.last_name,
 	prop.id AS property_id, prop.location, prop.property_name,
 	p.user_id, p.amount, p.id AS payment_d
-FROM booking b
-JOIN users u On b.user_id = u.id
-JOIN properties prop ON b.property_id = prop.id
-LEFT JOIN payment p ON b.payment_id = p.id;
+FROM booking b, users u, properties prop, payment p  WHERE  b.user_id = u.id AND b.property_id = prop.id AND b.payment_id = p.id;
 
 EXPLAIN
 SELECT 
